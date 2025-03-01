@@ -1,0 +1,7 @@
+CC = gcc
+CFLAGS = -Wall
+
+TARGET = calculator
+SRCS = main.c addition.c subtraction.c multiplication.c division.c
+OBJS = $(SRCS:.c=.o)
+
