@@ -1,19 +1,12 @@
-CC = gcc
-CFLAGS = -Wall
+objects = main.o addition.o subtraction.o multiplication.o division.o
 
-TARGET = calculator
-SRCS = main.c addition.c subtraction.c multiplication.c division.c
-OBJS = $(SRCS:.c=.o)
+calculator: $(objects)
+	cc -o calculator $(objects)
 
-
-all: $(TARGET)
-
-$(TARGET): $(OBJS)
-	$(CC) $(CFLAGS) -o $(TARGET) $(OBJS)
-
-%.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
-
+$(objects): %.o: %.c
+	cc -c $< -o $@
 
 clean:
-	rm -f $(OBJS) $(TARGET)
+	rm -f calculator $(objects)
+
+.PHONY: clean
